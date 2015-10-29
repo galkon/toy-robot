@@ -10,11 +10,11 @@ class Direction
   end
 
   def left_direction
-    direction_for(LEFT)
+    direction_turning(LEFT)
   end
 
   def right_direction
-    direction_for(RIGHT)
+    direction_turning(RIGHT)
   end
 
   def eql?(object)
@@ -27,7 +27,7 @@ class Direction
 
   private
 
-  def direction_for(turn)
+  def direction_turning(turn)
     Direction.new(compass_for_direction.rotate(turn).first).freeze
   end
 
