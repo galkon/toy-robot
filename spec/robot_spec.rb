@@ -18,12 +18,22 @@ describe Robot do
   end
 
   describe "#left" do
-    let(:left_position) { double(:position) }
+    let(:left_direction) { instance_double(Direction) }
 
     it "turns the robot left of it's current position" do
-      allow(position).to receive(:left_position) { left_position }
+      allow(direction).to receive(:left_direction) { left_direction }
       robot.left
-      expect(robot.position).to eq
+      expect(robot.direction).to eq left_direction
+    end
+  end
+
+  describe "#right" do
+    let(:right_direction) { instance_double(Direction) }
+
+    it "turns the robot right of it's current position" do
+      allow(direction).to receive(:right_direction) { right_direction }
+      robot.right
+      expect(robot.direction).to eq right_direction
     end
   end
 end

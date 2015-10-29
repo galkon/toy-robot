@@ -7,6 +7,10 @@ class Robot
   end
 
   def left
-    position = position.left_position
+    @direction = direction.left_direction
+  end
+
+  def right
+    @direction = direction.right_direction
   end
 end
