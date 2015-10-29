@@ -1,20 +1,16 @@
 class Direction
   attr_reader :value
 
-  COMPASS = [:west, :north, :east, :south].freeze
-  LEFT    = -1
-  RIGHT   = 1
-
   def initialize(value)
     @value = value
   end
 
   def left_direction
-    direction_turning(LEFT)
+    direction_turning(-1)
   end
 
   def right_direction
-    direction_turning(RIGHT)
+    direction_turning(1)
   end
 
   def eql?(object)
@@ -32,6 +28,10 @@ class Direction
   end
 
   def compass_for_direction
-    COMPASS.rotate(COMPASS.index(value))
+    compass.rotate(compass.index(value))
+  end
+
+  def compass
+    [:west, :north, :east, :south].freeze
   end
 end
