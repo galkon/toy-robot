@@ -21,6 +21,10 @@ class Direction
     self.value == object.value
   end
 
+  def to_s
+    "value = #{value}"
+  end
+
   private
 
   def direction_for(turn)

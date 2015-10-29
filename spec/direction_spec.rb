@@ -85,4 +85,10 @@ describe Direction do
       end
     end
   end
+
+  describe "to_s" do
+    it "returns the state of the direction" do
+      expect(direction.to_s).to eq "value = east"
+    end
+  end
 end

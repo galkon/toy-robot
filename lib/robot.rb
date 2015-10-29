@@ -13,4 +13,8 @@ class Robot
   def right
     @direction = direction.right_direction
   end
+
+  def to_s
+    "Position: [#{position.to_s}], Direction: [#{direction.to_s}]"
+  end
 end

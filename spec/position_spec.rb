@@ -12,4 +12,10 @@ describe Position do
       expect(position.y).to eq 1
     end
   end
+
+  describe "to_s" do
+    it "returns the positions state" do
+      expect(position.to_s).to eq "x = 0, y = 1"
+    end
+  end
 end
