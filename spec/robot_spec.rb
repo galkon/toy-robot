@@ -26,6 +26,10 @@ describe Robot do
       robot.left
       expect(robot.direction).to eq left_direction
     end
+
+    it "returns self" do
+      expect(robot.left).to eq robot
+    end
   end
 
   describe "#right" do
@@ -36,6 +40,10 @@ describe Robot do
     it "turns the robot right of it's current position" do
       robot.right
       expect(robot.direction).to eq right_direction
+    end
+
+    it "returns self" do
+      expect(robot.right).to eq robot
     end
   end
 

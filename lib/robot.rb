@@ -8,10 +8,12 @@ class Robot
 
   def left
     @direction = direction.left_direction
+    self
   end
 
   def right
     @direction = direction.right_direction
+    self
   end
 
   def to_s
