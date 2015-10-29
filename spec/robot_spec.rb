@@ -12,7 +12,7 @@ describe Robot do
       expect(robot.position).to eq position
     end
 
-    it "has a direction attribute" do
+    it "has a direction" do
       expect(robot.direction).to eq direction
     end
   end
