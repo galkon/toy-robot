@@ -16,4 +16,14 @@ describe Robot do
       expect(robot.direction).to eq direction
     end
   end
+
+  describe "#left" do
+    let(:left_position) { double(:position) }
+
+    it "turns the robot left of it's current position" do
+      allow(position).to receive(:left_position) { left_position }
+      robot.left
+      expect(robot.position).to eq
+    end
+  end
 end
