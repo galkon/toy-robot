@@ -1,15 +1,14 @@
 require 'robot'
+require 'position'
 
 describe Robot do
-  let(:robot) { Robot.new(0, 1, :east) }
+  let(:position) { Position.new(0, 1) }
+  let(:robot) { Robot.new(position, :east) }
 
   context "attributes" do
-    it "has a x attribute of 0" do
-      expect(robot.x).to eq 0
-    end
 
-    it "has a y attribute of 1" do
-      expect(robot.y).to eq 1
+    it "has a position" do
+      expect(robot.position).to eq position
     end
 
     it "has a facing attribute of east" do
