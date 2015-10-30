@@ -1,3 +1,5 @@
+require 'transformation'
+
 class Position
   attr_reader :x, :y
 
@@ -6,8 +8,8 @@ class Position
     @y = y
   end
 
-  def transform(x:, y:)
-    Position.new(x: self.x + x, y: self.y + y)
+  def transform(transformation)
+    Position.new(x: self.x + transformation.x, y: self.y + transformation.y)
   end
 
   def eql?(obj)

@@ -1,4 +1,5 @@
 require 'position'
+require 'transformation'
 
 describe Position do
   let(:position) { Position.new(x: 0, y: 1) }
@@ -14,12 +15,11 @@ describe Position do
   end
 
   describe "#transform" do
-    let(:x) { 1 }
-    let(:y) { 0 }
+    let(:transformation)    { Transformation.new(x: 1, y: 0) }
     let(:expected_position) { Position.new(x: 1, y: 1) }
 
     it "adds the x and y values to the positions x and y values" do
-      expect(position.transform(x: x, y: y)).to eql expected_position
+      expect(position.transform(transformation)).to eql expected_position
     end
   end
 
