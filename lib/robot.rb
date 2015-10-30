@@ -16,6 +16,10 @@ class Robot
     self
   end
 
+  def move
+    @position = self.position.transform(@direction.transformation)
+  end
+
   def to_s
     "Position: [#{position.to_s}], Direction: [#{direction.to_s}]"
   end

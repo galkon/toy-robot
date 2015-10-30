@@ -3,9 +3,10 @@ require 'position'
 require 'direction'
 
 describe Robot do
-  let(:position)  { Position.new(x: 0, y: 1) }
-  let(:direction) { Direction.new(:east) }
-  let(:robot)     { Robot.new(position: position, direction: direction) }
+  let(:direction_value) { :east }
+  let(:position)        { Position.new(x: 0, y: 0) }
+  let(:direction)       { Direction.new(direction_value) }
+  let(:robot)           { Robot.new(position: position, direction: direction) }
 
   context "attributes" do
     it "has a position" do
@@ -44,6 +45,50 @@ describe Robot do
 
     it "returns self" do
       expect(robot.right).to eq robot
+    end
+  end
+
+  describe "#move" do
+    let(:position) { Position.new(x: 2, y: 2) }
+
+    context "east direction" do
+      let(:direction_value)   { :east }
+      let(:expected_position) { Position.new(x: 3, y: 2) }
+
+      it "sets the position to the expected_position" do
+        robot.move
+        expect(robot.position).to eql expected_position
+      end
+    end
+
+    context "north direction" do
+      let(:direction_value)   { :north }
+      let(:expected_position) { Position.new(x: 2, y: 3) }
+
+      it "sets the position to the expected_position" do
+        robot.move
+        expect(robot.position).to eql expected_position
+      end
+    end
+
+    context "west direction" do
+      let(:direction_value)   { :west }
+      let(:expected_position) { Position.new(x: 1, y: 2) }
+
+      it "sets the position to the expected_position" do
+        robot.move
+        expect(robot.position).to eql expected_position
+      end
+    end
+
+    context "south direction" do
+      let(:direction_value)   { :south }
+      let(:expected_position) { Position.new(x: 2, y: 1) }
+
+      it "sets the position to the expected_position" do
+        robot.move
+        expect(robot.position).to eql expected_position
+      end
     end
   end
 
