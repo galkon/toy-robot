@@ -90,6 +90,10 @@ describe Robot do
         expect(robot.position).to eql expected_position
       end
     end
+
+    it "returns self" do
+      expect(robot.move).to eq robot
+    end
   end
 
   describe "#to_s" do
