@@ -1,3 +1,5 @@
+require 'transformation'
+
 class Direction
   attr_reader :value
 
@@ -15,6 +17,15 @@ class Direction
 
   def eql?(object)
     self.value == object.value
+  end
+
+  def transformation
+    {
+      west:  Transformation.new(x: -1, y:  0),
+      north: Transformation.new(x:  0, y:  1),
+      east:  Transformation.new(x:  1, y:  0),
+      south: Transformation.new(x:  0, y: -1)
+    }[self.value]
   end
 
   def to_s

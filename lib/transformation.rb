@@ -5,4 +5,8 @@ class Transformation
     @x = x
     @y = y
   end
+
+  def eql?(obj)
+    self.x == obj.x && self.y == obj.y
+  end
 end
