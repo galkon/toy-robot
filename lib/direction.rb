@@ -25,7 +25,7 @@ class Direction
       north: Transformation.new(x:  0, y:  1),
       east:  Transformation.new(x:  1, y:  0),
       south: Transformation.new(x:  0, y: -1)
-    }[self.value]
+    }[self.value].freeze
   end
 
   def to_s
