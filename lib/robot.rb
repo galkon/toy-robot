@@ -6,19 +6,21 @@ class Robot
     @direction = direction
   end
 
-  def left
-    @direction = direction.left_direction
-    self
+  def left_robot
+    Robot.new(position: position, direction: direction.left_direction)
   end
 
-  def right
-    @direction = direction.right_direction
-    self
+  def right_robot
+    Robot.new(position: position, direction: direction.right_direction)
   end
 
   def move
     @position = position.transform(direction.transformation)
     self
+  end
+
+  def eql?(other)
+    position == other.position && direction == other.direction
   end
 
   def to_s

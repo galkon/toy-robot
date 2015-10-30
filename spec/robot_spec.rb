@@ -18,38 +18,39 @@ describe Robot do
     end
   end
 
-  describe '#left' do
+  describe '#left_robot' do
     let(:left_direction) { instance_double(Direction) }
-
-    before { allow(direction).to receive(:left_direction) { left_direction } }
-
-    it "turns the robot left of it's current position" do
-      robot.left
-      expect(robot.direction).to eq left_direction
+    let(:expected_robot) do
+      Robot.new(position: position, direction: left_direction)
     end
 
-    it 'returns self' do
-      expect(robot.left).to eq robot
+    before do
+      allow(direction).to receive(:left_direction) { left_direction }
+    end
+
+    it 'returns a new robot with a left direction' do
+      expect(robot.left_robot).to eql expected_robot
     end
   end
 
-  describe '#right' do
+  describe '#right_robot' do
     let(:right_direction) { instance_double(Direction) }
-
-    before { allow(direction).to receive(:right_direction) { right_direction } }
-
-    it "turns the robot right of it's current position" do
-      robot.right
-      expect(robot.direction).to eq right_direction
+    let(:expected_robot) do
+      Robot.new(position: position, direction: right_direction)
     end
 
-    it 'returns self' do
-      expect(robot.right).to eq robot
+    before do
+      allow(direction).to receive(:right_direction) { right_direction }
+    end
+
+    it 'returns a new robot with a right direction' do
+      expect(robot.right_robot).to eql expected_robot
     end
   end
 
   describe '#move' do
     let(:position) { Position.new(x: 2, y: 2) }
+    let(:expected_robot) { Robot.new(position: position, direction: direction) }
 
     context 'east direction' do
       let(:direction_value)   { :east }
