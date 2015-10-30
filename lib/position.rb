@@ -9,11 +9,11 @@ class Position
   end
 
   def transform(transformation)
-    Position.new(x: self.x + transformation.x, y: self.y + transformation.y).freeze
+    Position.new(x: x + transformation.x, y: y + transformation.y).freeze
   end
 
   def eql?(obj)
-    self.x == obj.x && self.y == obj.y
+    x == obj.x && y == obj.y
   end
 
   def to_s

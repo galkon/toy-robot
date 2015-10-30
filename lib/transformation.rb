@@ -7,6 +7,6 @@ class Transformation
   end
 
   def eql?(obj)
-    self.x == obj.x && self.y == obj.y
+    x == obj.x && y == obj.y
   end
 end
