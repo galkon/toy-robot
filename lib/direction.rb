@@ -15,8 +15,8 @@ class Direction
     direction_for(right)
   end
 
-  def eql?(object)
-    value == object.value
+  def eql?(other)
+    value == other.value
   end
 
   def transformation

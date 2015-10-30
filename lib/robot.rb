@@ -22,6 +22,6 @@ class Robot
   end
 
   def to_s
-    "Position: [#{position.to_s}], Direction: [#{direction.to_s}]"
+    "Position: [#{position}], Direction: [#{direction}]"
   end
 end

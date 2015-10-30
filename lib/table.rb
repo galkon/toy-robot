@@ -6,8 +6,10 @@ class Table
   end
 
   def place_robot(robot)
-    remove_robots
-    grid[robot.position.y][robot.position.x] = robot if robot.position.y < grid.size
+    if robot.position.y < grid.size
+      remove_robots
+      grid[robot.position.y][robot.position.x] = robot
+    end
     self
   end
 

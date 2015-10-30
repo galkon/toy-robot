@@ -4,28 +4,28 @@ require 'transformation'
 describe Position do
   let(:position) { Position.new(x: 0, y: 1) }
 
-  context "attributes" do
-    it "has an x attribute of 0" do
+  context 'attributes' do
+    it 'has an x attribute of 0' do
       expect(position.x).to eq 0
     end
 
-    it "has a y attribute of 1" do
+    it 'has a y attribute of 1' do
       expect(position.y).to eq 1
     end
   end
 
-  describe "#transform" do
+  describe '#transform' do
     let(:transformation)    { Transformation.new(x: 1, y: 0) }
     let(:expected_position) { Position.new(x: 1, y: 1) }
 
-    it "adds the x and y values to the positions x and y values" do
+    it 'adds the x and y values to the positions x and y values' do
       expect(position.transform(transformation)).to eql expected_position
     end
   end
 
-  describe "#to_s" do
-    it "returns the positions state" do
-      expect(position.to_s).to eq "x = 0, y = 1"
+  describe '#to_s' do
+    it 'returns the positions state' do
+      expect(position.to_s).to eq 'x = 0, y = 1'
     end
   end
 end
