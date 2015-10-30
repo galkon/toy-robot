@@ -10,7 +10,7 @@ class Table
       remove_robots
       grid[robot.position.y][robot.position.x] = robot
     end
-    self
+    nil
   end
 
   private

@@ -58,8 +58,8 @@ describe Table do
       end
     end
 
-    it 'returns self' do
-      expect(table.place_robot(robot)).to eq table
+    it 'returns nil' do
+      expect(table.place_robot(robot)).to eq nil
     end
   end
 end
