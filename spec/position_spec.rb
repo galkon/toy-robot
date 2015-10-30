@@ -1,7 +1,7 @@
 require 'position'
 
 describe Position do
-  let(:position) { Position.new(0, 1) }
+  let(:position) { Position.new(x: 0, y: 1) }
 
   context "attributes" do
     it "has an x attribute of 0" do
@@ -13,7 +13,17 @@ describe Position do
     end
   end
 
-  describe "to_s" do
+  describe "#transform" do
+    let(:x) { 1 }
+    let(:y) { 0 }
+    let(:expected_position) { Position.new(x: 1, y: 1) }
+
+    it "adds the x and y values to the positions x and y values" do
+      expect(position.transform(x: x, y: y)).to eql expected_position
+    end
+  end
+
+  describe "#to_s" do
     it "returns the positions state" do
       expect(position.to_s).to eq "x = 0, y = 1"
     end

@@ -3,9 +3,9 @@ require 'position'
 require 'direction'
 
 describe Robot do
-  let(:position)  { Position.new(0, 1) }
+  let(:position)  { Position.new(x: 0, y: 1) }
   let(:direction) { Direction.new(:east) }
-  let(:robot)     { Robot.new(position, direction) }
+  let(:robot)     { Robot.new(position: position, direction: direction) }
 
   context "attributes" do
     it "has a position" do
