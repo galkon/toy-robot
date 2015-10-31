@@ -15,12 +15,12 @@ class Direction
     direction_for(right)
   end
 
-  def ==(other)
-    value == other.value
-  end
-
   def transformation
     transformations[value].freeze
+  end
+
+  def ==(other)
+    value == other.value
   end
 
   private

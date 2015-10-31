@@ -16,12 +16,6 @@ class Robot
     build_robot_with(position: moved_position, direction: direction)
   end
 
-  def ==(other)
-    self.class == other.class &&
-      position == other.send(:position) &&
-      direction == other.send(:direction)
-  end
-
   def x
     position.x
   end
@@ -32,6 +26,12 @@ class Robot
 
   def to_s
     "Robot: [x = #{x}, y = #{y}, facing = #{facing}]"
+  end
+
+  def ==(other)
+    self.class == other.class &&
+      position == other.send(:position) &&
+      direction == other.send(:direction)
   end
 
   private
