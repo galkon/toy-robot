@@ -69,9 +69,9 @@ describe Table do
   end
 
   describe '#report_robots_position' do
-    before { table.instance_variable_set("@robot", robot) }
+    before { table.instance_variable_set('@robot', robot) }
 
-    it "returns the robots string representation" do
+    it 'returns the robots string representation' do
       expect(table.report_robots_position).to eq robot.to_s
     end
   end
