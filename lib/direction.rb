@@ -20,12 +20,7 @@ class Direction
   end
 
   def transformation
-    {
-      west:  Transformation.new(x: -1, y:  0),
-      north: Transformation.new(x:  0, y:  1),
-      east:  Transformation.new(x:  1, y:  0),
-      south: Transformation.new(x:  0, y: -1)
-    }[value].freeze
+    transformations[value].freeze
   end
 
   def to_s
@@ -52,5 +47,14 @@ class Direction
 
   def compass
     [:west, :north, :east, :south].freeze
+  end
+
+  def transformations
+    {
+      west:  Transformation.new(x: -1, y:  0),
+      north: Transformation.new(x:  0, y:  1),
+      east:  Transformation.new(x:  1, y:  0),
+      south: Transformation.new(x:  0, y: -1)
+    }
   end
 end
