@@ -1,3 +1,5 @@
+require 'robot'
+
 class Simulation
   def initialize(table)
     @table = table
