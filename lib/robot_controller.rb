@@ -6,7 +6,7 @@ class RobotController
   end
 
   def place(x:, y:, facing:)
-    @robot = build_robot(position(x,y), direction(facing))
+    @robot = build_robot(position(x, y), direction(facing))
     table.place_robot(robot)
   end
 

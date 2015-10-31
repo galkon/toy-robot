@@ -17,9 +17,9 @@ class Table
 
   def within_bounds?(object)
     object.position.x >= 0 &&
-    object.position.y >= 0 &&
-    object.position.x < width &&
-    object.position.y < height
+      object.position.y >= 0 &&
+      object.position.x < width &&
+      object.position.y < height
   end
 
   def width

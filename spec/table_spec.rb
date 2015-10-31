@@ -26,7 +26,7 @@ describe Table do
       end
     end
 
-    context "robot x is negative" do
+    context 'robot x is negative' do
       let(:position) { Position.new(x: -2, y: 0) }
 
       it "doesn't add the robot to the grid" do
@@ -35,7 +35,7 @@ describe Table do
       end
     end
 
-    context "robot y is negative" do
+    context 'robot y is negative' do
       let(:position) { Position.new(x: 0, y: -2) }
 
       it "doesn't add the robot to the grid" do
@@ -44,7 +44,7 @@ describe Table do
       end
     end
 
-    context "robot x is greater than 5" do
+    context 'robot x is greater than 5' do
       let(:position) { Position.new(x: 8, y: 0) }
 
       it "doesn't add the robot to the grid" do
@@ -53,7 +53,7 @@ describe Table do
       end
     end
 
-    context "robot y is greater than 5" do
+    context 'robot y is greater than 5' do
       let(:position) { Position.new(x: 0, y: 8) }
 
       it "doesn't add the robot to the grid" do
