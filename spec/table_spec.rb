@@ -1,11 +1,9 @@
 require 'spec_helper'
 require 'table'
 require 'robot'
-require 'direction'
 
 describe Table do
   let(:table)     { Table.new }
-  let(:direction) { Direction.new(:east) }
   let(:robot)     { instance_double(Robot, x: 0, y: 0) }
   let(:grid)      { table.send(:grid) }
 
@@ -69,7 +67,6 @@ describe Table do
   end
 
   describe '#move_robot' do
-    let(:direction)      { Direction.new(:north) }
     let(:expected_robot) do
       instance_double(Robot, x: 2, y: 3)
     end
