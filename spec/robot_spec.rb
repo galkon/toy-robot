@@ -103,7 +103,7 @@ describe Robot do
 
   describe '#to_s' do
     let(:expected_output) do
-      "Robot: [x = 0, y = 1, facing = east]"
+      'Robot: [x = 0, y = 1, facing = east]'
     end
 
     it 'prints the robots state' do

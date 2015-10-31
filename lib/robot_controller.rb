@@ -4,7 +4,7 @@ class RobotController
   end
 
   def place(x:, y:, facing:)
-    table.place_robot(build_robot(position(x, y), direction(facing)))
+    table.place_robot(Robot.new(x: x, y: y, facing: facing))
   end
 
   def report
@@ -18,16 +18,4 @@ class RobotController
   private
 
   attr_reader :table
-
-  def build_robot(position, direction)
-    Robot.new(position: position, direction: direction)
-  end
-
-  def position(x, y)
-    Position.new(x: x, y: y)
-  end
-
-  def direction(facing)
-    Direction.new(facing)
-  end
 end

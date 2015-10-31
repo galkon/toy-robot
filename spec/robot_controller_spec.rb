@@ -8,9 +8,7 @@ require 'robot_controller'
 describe RobotController do
   let(:table)            { instance_double(Table) }
   let(:robot_controller) { RobotController.new(table) }
-  let(:position)         { Position.new(x: 0, y: 0) }
-  let(:direction)        { Direction.new(:east) }
-  let(:robot)            { Robot.new(position: position, direction: direction) }
+  let(:robot)            { Robot.new(x: 0, y: 0, facing: :east) }
 
   context 'attributes' do
     it 'has a table' do
