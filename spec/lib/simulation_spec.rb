@@ -26,11 +26,13 @@ describe Simulation do
     let(:position) { 'position' }
 
     before do
+      allow(simulation).to receive(:puts)
       allow(table).to receive(:report_robots_position) { position }
     end
 
     it 'returns the string representation of the robot' do
-      expect(simulation.report).to eq position
+      simulation.report
+      expect(simulation).to have_received(:puts).with(position)
     end
   end
 

@@ -10,7 +10,7 @@ class Simulation
   end
 
   def report
-    table.report_robots_position
+    puts table.report_robots_position
   end
 
   def move
