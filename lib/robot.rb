@@ -18,8 +18,8 @@ class Robot
     Robot.new(position: moved_position, direction: direction)
   end
 
-  def eql?(other)
-    position.eql?(other.position) && direction.eql?(other.direction)
+  def ==(other)
+    position == other.position && direction == other.direction
   end
 
   def to_s

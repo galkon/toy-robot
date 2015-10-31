@@ -15,7 +15,7 @@ class Direction
     direction_for(right)
   end
 
-  def eql?(other)
+  def ==(other)
     value == other.value
   end
 

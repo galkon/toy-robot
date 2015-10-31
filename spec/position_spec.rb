@@ -19,7 +19,7 @@ describe Position do
     let(:expected_position) { Position.new(x: 1, y: 1) }
 
     it 'adds the x and y values to the positions x and y values' do
-      expect(position.transform(transformation)).to eql expected_position
+      expect(position.transform(transformation)).to eq expected_position
     end
   end
 

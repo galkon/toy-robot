@@ -16,7 +16,7 @@ describe Direction do
       let(:expected_direction) { Direction.new(:west) }
 
       it 'returns a west direction object' do
-        expect(direction.left_direction).to eql expected_direction
+        expect(direction.left_direction).to eq expected_direction
       end
     end
 
@@ -25,7 +25,7 @@ describe Direction do
       let(:expected_direction) { Direction.new(:north) }
 
       it 'returns a north direction object' do
-        expect(direction.left_direction).to eql expected_direction
+        expect(direction.left_direction).to eq expected_direction
       end
     end
 
@@ -34,7 +34,7 @@ describe Direction do
       let(:expected_direction) { Direction.new(:east) }
 
       it 'returns a east direction object' do
-        expect(direction.left_direction).to eql expected_direction
+        expect(direction.left_direction).to eq expected_direction
       end
     end
 
@@ -43,7 +43,7 @@ describe Direction do
       let(:expected_direction) { Direction.new(:south) }
 
       it 'returns a south direction object' do
-        expect(direction.left_direction).to eql expected_direction
+        expect(direction.left_direction).to eq expected_direction
       end
     end
   end
@@ -54,7 +54,7 @@ describe Direction do
       let(:expected_direction) { Direction.new(:east) }
 
       it 'returns a east direction object' do
-        expect(direction.right_direction).to eql expected_direction
+        expect(direction.right_direction).to eq expected_direction
       end
     end
 
@@ -63,7 +63,7 @@ describe Direction do
       let(:expected_direction) { Direction.new(:south) }
 
       it 'returns a south direction object' do
-        expect(direction.right_direction).to eql expected_direction
+        expect(direction.right_direction).to eq expected_direction
       end
     end
 
@@ -72,7 +72,7 @@ describe Direction do
       let(:expected_direction) { Direction.new(:west) }
 
       it 'returns a west direction object' do
-        expect(direction.right_direction).to eql expected_direction
+        expect(direction.right_direction).to eq expected_direction
       end
     end
 
@@ -81,7 +81,7 @@ describe Direction do
       let(:expected_direction) { Direction.new(:north) }
 
       it 'returns a north direction object' do
-        expect(direction.right_direction).to eql expected_direction
+        expect(direction.right_direction).to eq expected_direction
       end
     end
   end
@@ -92,7 +92,7 @@ describe Direction do
       let(:expected_transformation) { Transformation.new(x: -1, y: 0) }
 
       it 'returns the correct transformation for west' do
-        expect(direction.transformation).to eql expected_transformation
+        expect(direction.transformation).to eq expected_transformation
       end
     end
 
@@ -101,7 +101,7 @@ describe Direction do
       let(:expected_transformation) { Transformation.new(x: 0, y: 1) }
 
       it 'returns the correct transformation for north' do
-        expect(direction.transformation).to eql expected_transformation
+        expect(direction.transformation).to eq expected_transformation
       end
     end
 
@@ -110,7 +110,7 @@ describe Direction do
       let(:expected_transformation) { Transformation.new(x: 1, y: 0) }
 
       it 'returns the correct transformation for east' do
-        expect(direction.transformation).to eql expected_transformation
+        expect(direction.transformation).to eq expected_transformation
       end
     end
 
@@ -119,7 +119,7 @@ describe Direction do
       let(:expected_transformation) { Transformation.new(x: 0, y: -1) }
 
       it 'returns the correct transformation for south' do
-        expect(direction.transformation).to eql expected_transformation
+        expect(direction.transformation).to eq expected_transformation
       end
     end
   end

@@ -6,7 +6,7 @@ class Transformation
     @y = y
   end
 
-  def eql?(other)
+  def ==(other)
     x == other.x && y == other.y
   end
 end

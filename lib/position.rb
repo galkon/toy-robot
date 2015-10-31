@@ -12,7 +12,7 @@ class Position
     Position.new(x: x + transformation.x, y: y + transformation.y).freeze
   end
 
-  def eql?(other)
+  def ==(other)
     x == other.x && y == other.y
   end
 

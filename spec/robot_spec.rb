@@ -29,7 +29,7 @@ describe Robot do
     end
 
     it 'returns a new robot with a left direction' do
-      expect(robot.left_robot).to eql expected_robot
+      expect(robot.left_robot).to eq expected_robot
     end
   end
 
@@ -44,7 +44,7 @@ describe Robot do
     end
 
     it 'returns a new robot with a right direction' do
-      expect(robot.right_robot).to eql expected_robot
+      expect(robot.right_robot).to eq expected_robot
     end
   end
 
@@ -60,7 +60,7 @@ describe Robot do
       let(:new_position)    { Position.new(x: 3, y: 2) }
 
       it 'sets the position to the expected_position' do
-        expect(robot.moved_robot).to eql expected_robot
+        expect(robot.moved_robot).to eq expected_robot
       end
     end
 
@@ -69,7 +69,7 @@ describe Robot do
       let(:new_position) { Position.new(x: 2, y: 3) }
 
       it 'sets the position to the expected_position' do
-        expect(robot.moved_robot).to eql expected_robot
+        expect(robot.moved_robot).to eq expected_robot
       end
     end
 
@@ -78,7 +78,7 @@ describe Robot do
       let(:new_position) { Position.new(x: 1, y: 2) }
 
       it 'sets the position to the expected_position' do
-        expect(robot.moved_robot).to eql expected_robot
+        expect(robot.moved_robot).to eq expected_robot
       end
     end
 
@@ -87,7 +87,7 @@ describe Robot do
       let(:new_position) { Position.new(x: 2, y: 1) }
 
       it 'sets the position to the expected_position' do
-        expect(robot.moved_robot).to eql expected_robot
+        expect(robot.moved_robot).to eq expected_robot
       end
     end
   end
