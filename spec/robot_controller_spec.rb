@@ -29,6 +29,15 @@ describe RobotController do
     end
   end
 
+  describe '#move' do
+    before { allow(table).to receive(:move_robot) }
+
+    it 'calls move_robot on the table' do
+      robot_controller.move
+      expect(table).to have_received(:move_robot)
+    end
+  end
+
   describe '#report' do
     let(:position) { 'position' }
 

@@ -13,6 +13,10 @@ class RobotController
     @table.report_robots_position
   end
 
+  def move
+    @table.move_robot
+  end
+
   private
 
   def build_robot(position, direction)
