@@ -1,5 +1,5 @@
 class Table
-  attr_reader :grid
+  attr_reader :grid, :robot
 
   def initialize
     @grid = Array.new(height) { Array.new(width) }
@@ -8,9 +8,14 @@ class Table
   def place_robot(robot)
     if within_bounds?(robot)
       remove_robots
-      grid[robot.position.y][robot.position.x] = robot
+      @robot = robot
+      grid[robot.position.y][robot.position.x] = self.robot
     end
     nil
+  end
+
+  def report_robots_position
+    robot.to_s
   end
 
   private

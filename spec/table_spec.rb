@@ -67,4 +67,12 @@ describe Table do
       expect(table.place_robot(robot)).to eq nil
     end
   end
+
+  describe '#report_robots_position' do
+    before { table.instance_variable_set("@robot", robot) }
+
+    it "returns the robots string representation" do
+      expect(table.report_robots_position).to eq robot.to_s
+    end
+  end
 end

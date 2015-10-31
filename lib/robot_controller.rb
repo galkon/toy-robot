@@ -1,17 +1,16 @@
 class RobotController
-  attr_reader :table, :robot
+  attr_reader :table
 
   def initialize(table)
     @table = table
   end
 
   def place(x:, y:, facing:)
-    @robot = build_robot(position(x, y), direction(facing))
-    table.place_robot(robot)
+    table.place_robot(build_robot(position(x, y), direction(facing)))
   end
 
   def report
-    @robot.to_s
+    @table.report_robots_position
   end
 
   private
