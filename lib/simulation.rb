@@ -1,4 +1,4 @@
-class RobotController
+class Simulation
   def initialize(table)
     @table = table
   end

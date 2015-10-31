@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe RobotController do
+describe Simulation do
   let(:table)            { instance_double(Table) }
-  let(:robot_controller) { RobotController.new(table) }
+  let(:robot_controller) { Simulation.new(table) }
   let(:robot)            { Robot.new(x: 0, y: 0, facing: :east) }
 
   describe '#place' do
