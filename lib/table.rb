@@ -13,8 +13,17 @@ class Table
     nil
   end
 
-  def move_robot
+  def place_moved_robot
     place_robot(robot.moved_robot)
+  end
+
+  def place_turned_robot(turn)
+    case turn
+    when :left
+      place_robot(robot.left_robot)
+    when :right
+      place_robot(robot.right_robot)
+    end
   end
 
   def report_robots_position

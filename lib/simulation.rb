@@ -12,7 +12,15 @@ class Simulation
   end
 
   def move
-    table.move_robot
+    table.place_moved_robot
+  end
+
+  def left
+    table.place_turned_robot(:left)
+  end
+
+  def right
+    table.place_turned_robot(:right)
   end
 
   private

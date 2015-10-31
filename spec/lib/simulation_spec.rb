@@ -29,11 +29,29 @@ describe Simulation do
   end
 
   describe '#move' do
-    before { allow(table).to receive(:move_robot) }
+    before { allow(table).to receive(:place_moved_robot) }
 
-    it 'calls move_robot on the table' do
+    it 'instructs the table to move the robot' do
       robot_controller.move
-      expect(table).to have_received(:move_robot)
+      expect(table).to have_received(:place_moved_robot)
+    end
+  end
+
+  describe '#left' do
+    before { allow(table).to receive(:place_turned_robot) }
+
+    it 'instructs the table to turn the robot left' do
+      robot_controller.left
+      expect(table).to have_received(:place_turned_robot).with(:left)
+    end
+  end
+
+  describe '#right' do
+    before { allow(table).to receive(:place_turned_robot) }
+
+    it 'instructs the table to turn the robot right' do
+      robot_controller.right
+      expect(table).to have_received(:place_turned_robot).with(:right)
     end
   end
 end

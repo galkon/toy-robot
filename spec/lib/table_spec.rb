@@ -19,7 +19,7 @@ describe Table do
       it 'only allows one robot to be placed' do
         table.place_robot(robot)
         table.place_robot(robot_2)
-        expect(grid[0][0]).to be_nil
+        expect(grid[robot.y][robot.x]).to be_nil
       end
     end
 
@@ -64,7 +64,7 @@ describe Table do
     end
   end
 
-  describe '#move_robot' do
+  describe '#place_moved_robot' do
     let(:expected_robot) do
       instance_double(Robot, x: 2, y: 3)
     end
@@ -75,8 +75,41 @@ describe Table do
     end
 
     it 'places the moved robot' do
-      table.move_robot
-      expect(grid[3][2]).to eq expected_robot
+      table.place_moved_robot
+      expect(grid[expected_robot.y][expected_robot.x]).to eq expected_robot
+    end
+  end
+
+  describe '#place_turned_robot' do
+    before { table.instance_variable_set('@robot', robot) }
+
+    context 'left turn' do
+      let(:turn)       { :left }
+      let(:left_robot) { instance_double(Robot, x: 0, y: 0) }
+
+      before do
+        allow(robot).to receive(:left_robot) { left_robot }
+        table.place_turned_robot(turn)
+      end
+
+      it 'places a turned robot' do
+        expect(grid[left_robot.y][left_robot.x]).to eq left_robot
+      end
+    end
+
+    context 'right turn' do
+      let(:turn) { :right }
+      let(:right_robot) { instance_double(Robot, x: 0, y: 0) }
+
+      before do
+        table.instance_variable_set('@robot', robot)
+        allow(robot).to receive(:right_robot) { right_robot }
+        table.place_turned_robot(turn)
+      end
+
+      it 'places a turned robot' do
+        expect(grid[right_robot.y][right_robot.x]).to eq right_robot
+      end
     end
   end
 
