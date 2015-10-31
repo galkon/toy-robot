@@ -1,6 +1,4 @@
 class RobotController
-  attr_reader :table
-
   def initialize(table)
     @table = table
   end
@@ -18,6 +16,8 @@ class RobotController
   end
 
   private
+
+  attr_reader :table
 
   def build_robot(position, direction)
     Robot.new(position: position, direction: direction)

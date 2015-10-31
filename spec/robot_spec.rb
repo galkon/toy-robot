@@ -93,6 +93,18 @@ describe Robot do
     end
   end
 
+  describe '#x' do
+    it 'delegates #x to #position.x' do
+      expect(robot.x).to eq position.x
+    end
+  end
+
+  describe '#y' do
+    it 'delegates #y to #position.y' do
+      expect(robot.y).to eq position.y
+    end
+  end
+
   describe '#to_s' do
     let(:position)  { 'position' }
     let(:direction) { 'direction' }

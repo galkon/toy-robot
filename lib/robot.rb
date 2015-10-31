@@ -24,6 +24,14 @@ class Robot
       direction == other.direction
   end
 
+  def x
+    position.x
+  end
+
+  def y
+    position.y
+  end
+
   def to_s
     "Position: [#{position}], Direction: [#{direction}]"
   end

@@ -7,7 +7,7 @@ class Table
     if within_bounds?(robot)
       remove_robots
       @robot = robot
-      grid[robot.position.y][robot.position.x] = @robot
+      grid[robot.y][robot.x] = @robot
     end
     nil
   end
@@ -21,14 +21,14 @@ class Table
   end
 
   private
-  
+
   attr_reader :grid, :robot
 
   def within_bounds?(object)
-    object.position.x >= 0 &&
-      object.position.y >= 0 &&
-      object.position.x < width &&
-      object.position.y < height
+    object.x >= 0 &&
+      object.y >= 0 &&
+      object.x < width &&
+      object.y < height
   end
 
   def width

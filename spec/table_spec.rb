@@ -1,14 +1,12 @@
 require 'spec_helper'
 require 'table'
 require 'robot'
-require 'position'
 require 'direction'
 
 describe Table do
   let(:table)     { Table.new }
-  let(:position)  { Position.new(x: 0, y: 0) }
   let(:direction) { Direction.new(:east) }
-  let(:robot)     { Robot.new(position: position, direction: direction) }
+  let(:robot)     { instance_double(Robot, x: 0, y: 0) }
   let(:grid)      { table.send(:grid) }
 
   describe '#place_robot' do
@@ -18,8 +16,9 @@ describe Table do
     end
 
     context 'multiple robots' do
-      let(:position_2) { Position.new(x: 1, y: 0) }
-      let(:robot_2)    { Robot.new(position: position_2, direction: direction) }
+      let(:robot_2) { instance_double(Robot, x: 1, y: 0) }
+
+      before { allow(robot).to receive(:is_a?).with(Robot) { true } }
 
       it 'only allows one robot to be placed' do
         table.place_robot(robot)
@@ -29,38 +28,38 @@ describe Table do
     end
 
     context 'robot x is negative' do
-      let(:position) { Position.new(x: -2, y: 0) }
+      let(:robot) { instance_double(Robot, x: -2, y: 0) }
 
       it "doesn't add the robot to the grid" do
         table.place_robot(robot)
-        expect(grid[position.y]).to_not include(robot)
+        expect(grid[robot.y]).to_not include(robot)
       end
     end
 
     context 'robot y is negative' do
-      let(:position) { Position.new(x: 0, y: -2) }
+      let(:robot) { instance_double(Robot, x: 0, y: -2) }
 
       it "doesn't add the robot to the grid" do
         table.place_robot(robot)
-        expect(grid[position.y]).to_not include(robot)
+        expect(grid[robot.y]).to_not include(robot)
       end
     end
 
     context 'robot x is greater than 5' do
-      let(:position) { Position.new(x: 8, y: 0) }
+      let(:robot) { instance_double(Robot, x: 8, y: 0) }
 
       it "doesn't add the robot to the grid" do
         table.place_robot(robot)
-        expect(grid[position.y]).to_not include(robot)
+        expect(grid[robot.y]).to_not include(robot)
       end
     end
 
     context 'robot y is greater than 5' do
-      let(:position) { Position.new(x: 0, y: 8) }
+      let(:robot) { instance_double(Robot, x: 0, y: 8) }
 
       it "doesn't add the robot to the grid" do
         table.place_robot(robot)
-        expect(grid[position.y]).to eq nil
+        expect(grid[robot.y]).to eq nil
       end
     end
 
@@ -70,10 +69,9 @@ describe Table do
   end
 
   describe '#move_robot' do
-    let(:position)       { Position.new(x: 2, y: 2) }
     let(:direction)      { Direction.new(:north) }
     let(:expected_robot) do
-      instance_double(Robot, position: Position.new(x: 2, y: 3))
+      instance_double(Robot, x: 2, y: 3)
     end
 
     before do

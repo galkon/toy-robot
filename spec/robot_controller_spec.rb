@@ -14,7 +14,7 @@ describe RobotController do
 
   context 'attributes' do
     it 'has a table' do
-      expect(robot_controller.table).to eq table
+      expect(robot_controller.send(:table)).to eq table
     end
   end
 
