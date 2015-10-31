@@ -1,5 +1,3 @@
-require 'transformation'
-
 class Position
   attr_reader :x, :y
 
