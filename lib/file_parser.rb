@@ -18,7 +18,7 @@ class FileParser
   def dispatch_action(action_matcher)
     action = action_matcher[1]
 
-    if action == place_action_identifier
+    if action == 'PLACE'
       action_args = action_matcher[2]
       handle_place_action(action_args)
     else
@@ -28,10 +28,6 @@ class FileParser
 
   def split_args(comma_list)
     comma_list.strip.split(',')
-  end
-
-  def place_action_identifier
-    'PLACE'
   end
 
   def place_action(x:, y:, facing:)
