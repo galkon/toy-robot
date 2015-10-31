@@ -6,8 +6,7 @@ class Table
   def place_robot(robot)
     if within_bounds?(robot)
       remove_robots
-      @robot = robot
-      grid[robot.y][robot.x] = @robot
+      grid[robot.y][robot.x] = robot
     end
     nil
   end

@@ -8,11 +8,11 @@ class RobotController
   end
 
   def report
-    @table.report_robots_position
+    table.report_robots_position
   end
 
   def move
-    @table.move_robot
+    table.move_robot
   end
 
   private

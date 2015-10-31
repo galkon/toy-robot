@@ -10,12 +10,6 @@ describe RobotController do
   let(:robot_controller) { RobotController.new(table) }
   let(:robot)            { Robot.new(x: 0, y: 0, facing: :east) }
 
-  context 'attributes' do
-    it 'has a table' do
-      expect(robot_controller.send(:table)).to eq table
-    end
-  end
-
   describe '#place' do
     before do
       allow(table).to receive(:place_robot)
