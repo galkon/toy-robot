@@ -1,5 +1,7 @@
 class Table
-  def initialize
+  def initialize(width = 5, height = 5)
+    @width = width
+    @height = height
     @grid = Array.new(height) { Array.new(width) }
   end
 
@@ -21,21 +23,13 @@ class Table
 
   private
 
-  attr_reader :grid, :robot
+  attr_reader :grid, :robot, :width, :height
 
   def within_bounds?(object)
     object.x >= 0 &&
       object.y >= 0 &&
       object.x < width &&
       object.y < height
-  end
-
-  def width
-    5
-  end
-
-  def height
-    5
   end
 
   def remove_robots
