@@ -1,14 +1,20 @@
 require 'spec_helper'
 
 describe Simulation do
-  let(:table)            { instance_double(Table) }
-  let(:robot_controller) { Simulation.new(table) }
-  let(:robot)            { Robot.new(x: 0, y: 0, facing: :east) }
+  let(:table)      { instance_double(Table) }
+  let(:simulation) { Simulation.new(table) }
+  let(:robot)      { Robot.new(x: 0, y: 0, facing: :east) }
+
+  describe 'default attributes' do
+    it 'can be initialized with no attributes' do
+      expect { Simulation.new }.to_not raise_error(ArgumentError)
+    end
+  end
 
   describe '#place' do
     before do
       allow(table).to receive(:place_robot)
-      robot_controller.place(x: 0, y: 0, facing: :east)
+      simulation.place(x: 0, y: 0, facing: :east)
     end
 
     it 'places the robot on the table' do
@@ -24,7 +30,7 @@ describe Simulation do
     end
 
     it 'returns the string representation of the robot' do
-      expect(robot_controller.report).to eq position
+      expect(simulation.report).to eq position
     end
   end
 
@@ -32,7 +38,7 @@ describe Simulation do
     before { allow(table).to receive(:place_moved_robot) }
 
     it 'instructs the table to move the robot' do
-      robot_controller.move
+      simulation.move
       expect(table).to have_received(:place_moved_robot)
     end
   end
@@ -41,7 +47,7 @@ describe Simulation do
     before { allow(table).to receive(:place_turned_robot) }
 
     it 'instructs the table to turn the robot left' do
-      robot_controller.left
+      simulation.left
       expect(table).to have_received(:place_turned_robot).with(:left)
     end
   end
@@ -50,7 +56,7 @@ describe Simulation do
     before { allow(table).to receive(:place_turned_robot) }
 
     it 'instructs the table to turn the robot right' do
-      robot_controller.right
+      simulation.right
       expect(table).to have_received(:place_turned_robot).with(:right)
     end
   end

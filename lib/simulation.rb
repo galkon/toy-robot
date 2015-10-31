@@ -1,7 +1,7 @@
 require 'robot'
 
 class Simulation
-  def initialize(table)
+  def initialize(table = Table.new)
     @table = table
   end
 
