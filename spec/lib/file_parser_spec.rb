@@ -18,13 +18,13 @@ describe FileParser do
   describe 'parse_actions' do
     let(:expected_actions) do
       [
-        { action: 'PLACE', x: 1, y: 2, facing: 'EAST' },
-        { action: 'MOVE' },
-        { action: 'MOVE' },
-        { action: 'LEFT' },
-        { action: 'RIGHT' },
-        { action: 'MOVE' },
-        { action: 'REPORT' }
+        { action: :place, x: 1, y: 2, facing: :east },
+        { action: :move },
+        { action: :move },
+        { action: :left },
+        { action: :right },
+        { action: :move },
+        { action: :report }
       ]
     end
 
@@ -37,8 +37,10 @@ describe FileParser do
       let(:full_path) { "#{base_path}/patchy_robots.txt" }
       let(:expected_actions) do
         [
-          { action: 'PLACE', x: 0, y: 0, facing: 'NORTH' },
-          { action: 'MOVE' }, { action: 'MOVE' }, { action: 'REPORT' }
+          { action: :place, x: 0, y: 0, facing: :north },
+          { action: :move },
+          { action: :move },
+          { action: :report }
         ]
       end
 

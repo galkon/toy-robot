@@ -22,7 +22,7 @@ class FileParser
       action_args = action_matcher[2]
       handle_place_action(action_args)
     else
-      @parsed_actions << { action: action }
+      @parsed_actions << { action: action.downcase.to_sym }
     end
   end
 
@@ -35,7 +35,7 @@ class FileParser
   end
 
   def place_action(x:, y:, facing:)
-    { action: place_action_identifier, x: x, y: y, facing: facing }
+    { action: :place, x: x, y: y, facing: facing.downcase.to_sym }
   end
 
   def handle_place_action(args)
