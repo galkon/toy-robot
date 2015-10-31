@@ -15,8 +15,4 @@ class Position
   def ==(other)
     x == other.x && y == other.y
   end
-
-  def to_s
-    "x = #{x}, y = #{y}"
-  end
 end

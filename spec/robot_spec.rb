@@ -5,24 +5,15 @@ require 'direction'
 
 describe Robot do
   let(:direction_value) { :east }
-  let(:position)        { Position.new(x: 0, y: 0) }
-  let(:direction)       { Direction.new(direction_value) }
-  let(:robot)           { Robot.new(position: position, direction: direction) }
-
-  context 'attributes' do
-    it 'has a position' do
-      expect(robot.send(:position)).to eq position
-    end
-
-    it 'has a direction' do
-      expect(robot.send(:direction)).to eq direction
-    end
-  end
+  let(:x)               { 0 }
+  let(:y)               { 1 }
+  let(:robot)           { Robot.new(x: x, y: y, facing: direction_value) }
+  let(:direction)       { robot.send(:direction) }
 
   describe '#left_robot' do
-    let(:left_direction) { instance_double(Direction) }
+    let(:left_direction) { instance_double(Direction, value: :east) }
     let(:expected_robot) do
-      Robot.new(position: position, direction: left_direction)
+      Robot.new(x: x, y: y, facing: left_direction.value)
     end
 
     before do
@@ -35,9 +26,9 @@ describe Robot do
   end
 
   describe '#right_robot' do
-    let(:right_direction) { instance_double(Direction) }
+    let(:right_direction) { instance_double(Direction, value: :north) }
     let(:expected_robot) do
-      Robot.new(position: position, direction: right_direction)
+      Robot.new(x: x, y: y, facing: right_direction.value)
     end
 
     before do
@@ -50,15 +41,17 @@ describe Robot do
   end
 
   describe '#moved_robot' do
-    let(:position) { Position.new(x: 2, y: 2) }
+    let(:x) { 2 }
+    let(:y) { 2 }
 
     let(:expected_robot) do
-      Robot.new(position: new_position, direction: direction)
+      Robot.new(x: new_x, y: new_y, facing: direction_value)
     end
 
     context 'east direction' do
       let(:direction_value) { :east }
-      let(:new_position)    { Position.new(x: 3, y: 2) }
+      let(:new_x) { 3 }
+      let(:new_y) { 2 }
 
       it 'sets the position to the expected_position' do
         expect(robot.moved_robot).to eq expected_robot
@@ -67,7 +60,8 @@ describe Robot do
 
     context 'north direction' do
       let(:direction_value) { :north }
-      let(:new_position) { Position.new(x: 2, y: 3) }
+      let(:new_x) { 2 }
+      let(:new_y) { 3 }
 
       it 'sets the position to the expected_position' do
         expect(robot.moved_robot).to eq expected_robot
@@ -76,7 +70,8 @@ describe Robot do
 
     context 'west direction' do
       let(:direction_value) { :west }
-      let(:new_position) { Position.new(x: 1, y: 2) }
+      let(:new_x) { 1 }
+      let(:new_y) { 2 }
 
       it 'sets the position to the expected_position' do
         expect(robot.moved_robot).to eq expected_robot
@@ -85,7 +80,8 @@ describe Robot do
 
     context 'south direction' do
       let(:direction_value) { :south }
-      let(:new_position) { Position.new(x: 2, y: 1) }
+      let(:new_x) { 2 }
+      let(:new_y) { 1 }
 
       it 'sets the position to the expected_position' do
         expect(robot.moved_robot).to eq expected_robot
@@ -95,26 +91,19 @@ describe Robot do
 
   describe '#x' do
     it 'delegates #x to #position.x' do
-      expect(robot.x).to eq position.x
+      expect(robot.x).to eq x
     end
   end
 
   describe '#y' do
     it 'delegates #y to #position.y' do
-      expect(robot.y).to eq position.y
+      expect(robot.y).to eq y
     end
   end
 
   describe '#to_s' do
-    let(:position)  { 'position' }
-    let(:direction) { 'direction' }
     let(:expected_output) do
-      "Position: [#{position}], Direction: [#{direction}]"
-    end
-
-    before do
-      allow(position).to receive(:to_s) { position }
-      allow(direction).to receive(:to_s) { direction }
+      "Robot: [x = 0, y = 1, facing = east]"
     end
 
     it 'prints the robots state' do

@@ -1,7 +1,7 @@
 class Robot
-  def initialize(position:, direction:)
-    @position  = position
-    @direction = direction
+  def initialize(x:, y:, facing:)
+    @position  = Position.new(x: x, y: y)
+    @direction = Direction.new(facing)
   end
 
   def left_robot
@@ -13,7 +13,7 @@ class Robot
   end
 
   def moved_robot
-    Robot.new(position: moved_position, direction: direction)
+    build_robot_with(position: moved_position, direction: direction)
   end
 
   def ==(other)
@@ -31,19 +31,27 @@ class Robot
   end
 
   def to_s
-    "Position: [#{position}], Direction: [#{direction}]"
+    "Robot: [x = #{x}, y = #{y}, facing = #{facing}]"
   end
 
   private
 
   attr_reader :position, :direction
 
+  def facing
+    direction.value
+  end
+
+  def build_robot_with(position:, direction:)
+    Robot.new(x: position.x, y: position.y, facing: direction.value)
+  end
+
   def moved_position
     position.transform(direction.transformation)
   end
 
   def turned_robot(turn)
-    Robot.new(position: position, direction: direction_for(turn))
+    build_robot_with(position: position, direction: direction_for(turn))
   end
 
   def direction_for(turn)

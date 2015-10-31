@@ -23,10 +23,4 @@ describe Position do
       expect(position.transform(transformation)).to eq expected_position
     end
   end
-
-  describe '#to_s' do
-    it 'returns the positions state' do
-      expect(position.to_s).to eq 'x = 0, y = 1'
-    end
-  end
 end

@@ -23,10 +23,6 @@ class Direction
     transformations[value].freeze
   end
 
-  def to_s
-    "value = #{value}"
-  end
-
   private
 
   def left
