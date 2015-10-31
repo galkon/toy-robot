@@ -6,7 +6,7 @@
 
 ## Development
 
-#### Running console for manually testing objects
+#### Running console for manual testing.
 `./bin/console`
 
 #### Running tests
