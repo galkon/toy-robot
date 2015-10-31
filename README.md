@@ -1,5 +1,8 @@
 # Toy Robot challenge
 
+## Running a simulation
+
+`./bin/run <robots-file>` there are some examples under the `spec/fixtures` directory.
 
 ## Development
 
