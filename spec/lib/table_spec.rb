@@ -6,9 +6,14 @@ describe Table do
   let(:grid)      { table.send(:grid) }
 
   describe '#place_robot' do
+    before { table.place_robot(robot) }
+
     it 'places the robot in the grid' do
-      table.place_robot(robot)
       expect(grid[0][0]).to eq robot
+    end
+
+    it 'sets @robot' do
+      expect(table.instance_variable_get('@robot')).to eq robot
     end
 
     context 'multiple robots' do
@@ -17,7 +22,6 @@ describe Table do
       before { allow(robot).to receive(:is_a?).with(Robot) { true } }
 
       it 'only allows one robot to be placed' do
-        table.place_robot(robot)
         table.place_robot(robot_2)
         expect(grid[robot.y][robot.x]).to be_nil
       end
