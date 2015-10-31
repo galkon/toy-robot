@@ -26,35 +26,39 @@ describe Table do
       end
     end
 
-    context 'robot is out of upper y bounds' do
-      let(:position) { Position.new(x: 0, y: 6) }
+    context "robot x is negative" do
+      let(:position) { Position.new(x: -2, y: 0) }
 
-      it 'silently fails' do
-        expect { table.place_robot(robot) }.to_not raise_error
+      it "doesn't add the robot to the grid" do
+        table.place_robot(robot)
+        expect(table.grid[position.y]).to_not include(robot)
       end
     end
 
-    context 'robot is out of upper x bounds' do
-      let(:position) { Position.new(x: 6, y: 0) }
+    context "robot y is negative" do
+      let(:position) { Position.new(x: 0, y: -2) }
 
-      it 'silently fails' do
-        expect { table.place_robot(robot) }.to_not raise_error
+      it "doesn't add the robot to the grid" do
+        table.place_robot(robot)
+        expect(table.grid[position.y]).to_not include(robot)
       end
     end
 
-    context 'robot is out of lower x bounds' do
-      let(:position) { Position.new(x: -1, y: 0) }
+    context "robot x is greater than 5" do
+      let(:position) { Position.new(x: 8, y: 0) }
 
-      it 'silently fails' do
-        expect { table.place_robot(robot) }.to_not raise_error
+      it "doesn't add the robot to the grid" do
+        table.place_robot(robot)
+        expect(table.grid[position.y]).to_not include(robot)
       end
     end
 
-    context 'robot is out of lower y bounds' do
-      let(:position) { Position.new(x: 0, y: -1) }
+    context "robot y is greater than 5" do
+      let(:position) { Position.new(x: 0, y: 8) }
 
-      it 'silently fails' do
-        expect { table.place_robot(robot) }.to_not raise_error
+      it "doesn't add the robot to the grid" do
+        table.place_robot(robot)
+        expect(table.grid[position.y]).to eq nil
       end
     end
 

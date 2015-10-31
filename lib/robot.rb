@@ -19,7 +19,7 @@ class Robot
   end
 
   def ==(other)
-    position == other.position && direction == other.direction
+    self.class == other.class && position == other.position && direction == other.direction
   end
 
   def to_s
