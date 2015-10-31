@@ -10,6 +10,10 @@ class RobotController
     table.place_robot(robot)
   end
 
+  def report
+    @robot.to_s
+  end
+
   private
 
   def build_robot(position, direction)
