@@ -1,6 +1,4 @@
 class Robot
-  attr_reader :position, :direction
-
   def initialize(position:, direction:)
     @position  = position
     @direction = direction
@@ -20,8 +18,8 @@ class Robot
 
   def ==(other)
     self.class == other.class &&
-      position == other.position &&
-      direction == other.direction
+      position == other.send(:position) &&
+      direction == other.send(:direction)
   end
 
   def x
@@ -37,6 +35,8 @@ class Robot
   end
 
   private
+
+  attr_reader :position, :direction
 
   def moved_position
     position.transform(direction.transformation)

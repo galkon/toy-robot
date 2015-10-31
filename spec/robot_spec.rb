@@ -11,11 +11,11 @@ describe Robot do
 
   context 'attributes' do
     it 'has a position' do
-      expect(robot.position).to eq position
+      expect(robot.send(:position)).to eq position
     end
 
     it 'has a direction' do
-      expect(robot.direction).to eq direction
+      expect(robot.send(:direction)).to eq direction
     end
   end
 
