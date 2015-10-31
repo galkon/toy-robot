@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'transformation'
 
 describe Transformation do
   let(:transformation) { Transformation.new(x: 0, y: 1) }

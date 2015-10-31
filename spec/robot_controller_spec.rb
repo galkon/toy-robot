@@ -1,9 +1,4 @@
 require 'spec_helper'
-require 'table'
-require 'robot'
-require 'position'
-require 'direction'
-require 'robot_controller'
 
 describe RobotController do
   let(:table)            { instance_double(Table) }

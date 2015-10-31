@@ -1,6 +1,4 @@
 require 'spec_helper'
-require 'table'
-require 'robot'
 
 describe Table do
   let(:table)     { Table.new }

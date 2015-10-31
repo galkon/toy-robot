@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'direction'
 
 describe Direction do
   let(:value)     { :east }

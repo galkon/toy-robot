@@ -1,6 +1,4 @@
 require 'spec_helper'
-require 'position'
-require 'transformation'
 
 describe Position do
   let(:position) { Position.new(x: 0, y: 1) }

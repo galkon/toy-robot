@@ -1,7 +1,4 @@
 require 'spec_helper'
-require 'robot'
-require 'position'
-require 'direction'
 
 describe Robot do
   let(:direction_value) { :east }
