@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+# http://stackoverflow.com/questions/5294069/best-way-to-create-an-executable-for-a-gem-using-rake
+lib = File.expand_path(File.dirname(__FILE__) + '/../lib')
+$LOAD_PATH.unshift(lib) if File.directory?(lib) && !$LOAD_PATH.include?(lib)
+
+require './boot'
+
+simulation = Simulation.new
+parser = FileParser.new(ARGV[0])
+parser.parse_actions
+
+parser.parsed_actions.each do |action|
+  if action[:action] == :place
+    args = action.reject { |k,v| k == :action }
+    simulation.send(action[:action].downcase, args)
+  else
+    simulation.send(action[:action].downcase)
+  end
+end
