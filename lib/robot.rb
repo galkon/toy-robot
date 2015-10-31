@@ -7,11 +7,11 @@ class Robot
   end
 
   def left_robot
-    Robot.new(position: position, direction: direction.left_direction)
+    turned_robot(:left)
   end
 
   def right_robot
-    Robot.new(position: position, direction: direction.right_direction)
+    turned_robot(:right)
   end
 
   def moved_robot
@@ -30,5 +30,13 @@ class Robot
 
   def moved_position
     position.transform(direction.transformation)
+  end
+
+  def turned_robot(turn)
+    Robot.new(position: position, direction: direction_for(turn))
+  end
+
+  def direction_for(turn)
+    direction.send(:"#{turn}_direction")
   end
 end
