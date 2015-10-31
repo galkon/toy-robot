@@ -16,3 +16,7 @@ After experimenting with constants I decided not to use them in this program, th
 
 ##### Transformations in the Direction class
 I made the decision to have the transformations inside the Direction class because I wanted to keep the knowledge of west, north, east and south contained within the Direction class.
+
+##### Only checking class equality in the Robot class
+
+Following TDD I haven't come accross a failing test that requires me to check class equality on the other objects yet. If you remove it for the robot though a test will fail.
