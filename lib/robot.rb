@@ -14,16 +14,21 @@ class Robot
     Robot.new(position: position, direction: direction.right_direction)
   end
 
-  def move
-    @position = position.transform(direction.transformation)
-    self
+  def moved_robot
+    Robot.new(position: moved_position, direction: direction)
   end
 
   def eql?(other)
-    position == other.position && direction == other.direction
+    position.eql?(other.position) && direction.eql?(other.direction)
   end
 
   def to_s
     "Position: [#{position}], Direction: [#{direction}]"
+  end
+
+  private
+
+  def moved_position
+    position.transform(direction.transformation)
   end
 end
