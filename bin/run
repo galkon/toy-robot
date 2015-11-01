@@ -6,15 +6,4 @@ $LOAD_PATH.unshift(lib) if File.directory?(lib) && !$LOAD_PATH.include?(lib)
 
 require './boot'
 
-simulation = Simulation.new
-parser = FileParser.new(ARGV[0])
-parser.parse_actions
-
-parser.parsed_actions.each do |action|
-  if action[:action] == :place
-    args = action.reject { |k, _v| k == :action }
-    simulation.send(action[:action].downcase, args)
-  else
-    simulation.send(action[:action].downcase)
-  end
-end
+FileRunner.new(ARGV[0]).execute_actions
