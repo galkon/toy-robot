@@ -72,6 +72,15 @@ describe Table do
       table.place_moved_robot
       expect(table).to have_received(:place_robot).with(expected_robot)
     end
+
+    context 'no grid' do
+      before { table.instance_variable_set('@grid', nil) }
+
+      it "doesn't place the moved robot" do
+        table.place_moved_robot
+        expect(table).to_not have_received(:place_robot).with(expected_robot)
+      end
+    end
   end
 
   describe '#place_turned_robot' do
@@ -90,6 +99,15 @@ describe Table do
         table.place_turned_robot(turn)
         expect(table).to have_received(:place_robot).with(left_robot)
       end
+
+      context 'no grid' do
+        before { table.instance_variable_set('@grid', nil) }
+
+        it "doesn't place the moved robot" do
+          table.place_turned_robot(turn)
+          expect(table).to_not have_received(:place_robot).with(left_robot)
+        end
+      end
     end
 
     context 'right turn' do
@@ -105,6 +123,15 @@ describe Table do
         table.place_turned_robot(turn)
         expect(table).to have_received(:place_robot).with(right_robot)
       end
+
+      context 'no grid' do
+        before { table.instance_variable_set('@grid', nil) }
+
+        it "doesn't place the moved robot" do
+          table.place_turned_robot(turn)
+          expect(table).to_not have_received(:place_robot).with(right_robot)
+        end
+      end
     end
   end
 
@@ -113,6 +140,14 @@ describe Table do
 
     it 'returns the robots string representation' do
       expect(table.report_robots_position).to eq robot.to_s
+    end
+
+    context 'no grid' do
+      before { table.instance_variable_set('@grid', nil) }
+
+      it "returns nil" do
+        expect(table.report_robots_position).to eq nil
+      end
     end
   end
 end

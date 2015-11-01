@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Grid do
   let(:robot) { instance_double(Robot, x: 0, y: 0) }
-  let(:grid) { Grid.new(robot) }
+  let(:grid)  { Grid.new(robot) }
 
   context 'attributes' do
     it 'has a robot' do

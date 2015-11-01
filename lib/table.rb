@@ -5,15 +5,15 @@ class Table
   end
 
   def place_moved_robot
-    place_robot(robot.moved_robot)
+    place_robot(robot.moved_robot) if grid
   end
 
   def place_turned_robot(turn)
-    place_robot(robot.send(:"#{turn}_robot")) if [:left, :right].include?(turn)
+    place_robot(robot.send(:"#{turn}_robot")) if grid && [:left, :right].include?(turn)
   end
 
   def report_robots_position
-    robot.to_s
+    robot.to_s if grid
   end
 
   private

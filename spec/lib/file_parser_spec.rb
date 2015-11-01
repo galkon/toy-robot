@@ -3,7 +3,7 @@ require 'spec_helper'
 describe FileParser do
   let(:base_path) { 'spec/fixtures' }
   let(:full_path) { "#{base_path}/robots.txt" }
-  let(:parser) { FileParser.new(full_path) }
+  let(:parser)    { FileParser.new(full_path) }
 
   describe 'initialize' do
     it 'should set the file_path' do
