@@ -9,18 +9,18 @@ class FileParser
   def parse_actions
     File.open(file_path, 'r').each_line do |line|
       match = line.match(/(\w+)(.*)/)
-      match ? dispatch_action(match) : next
+      match ? add_action(match) : next
     end
   end
 
   private
 
-  def dispatch_action(action_matcher)
+  def add_action(action_matcher)
     action = action_matcher[1]
 
     if action == 'PLACE'
       action_args = action_matcher[2]
-      handle_place_action(action_args)
+      add_place_action(action_args)
     else
       @parsed_actions << { action: action.downcase.to_sym }
     end
@@ -34,7 +34,7 @@ class FileParser
     { action: :place, x: x, y: y, facing: facing.downcase.to_sym }
   end
 
-  def handle_place_action(args)
+  def add_place_action(args)
     args = split_args(args)
     action = place_action(
       x: args[0].to_i,
