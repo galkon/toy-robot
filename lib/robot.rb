@@ -30,13 +30,11 @@ class Robot
 
   def ==(other)
     self.class == other.class &&
-      position == other.send(:position) &&
-      direction == other.send(:direction)
+      position == other.position &&
+      direction == other.direction
   end
 
   private
-
-  attr_reader :position, :direction
 
   def facing
     direction.value
@@ -57,4 +55,8 @@ class Robot
   def direction_for(turn)
     direction.send(:"#{turn}_direction")
   end
+
+  protected
+
+  attr_reader :position, :direction
 end

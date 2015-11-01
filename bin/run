@@ -12,7 +12,7 @@ parser.parse_actions
 
 parser.parsed_actions.each do |action|
   if action[:action] == :place
-    args = action.reject { |k,v| k == :action }
+    args = action.reject { |k, _v| k == :action }
     simulation.send(action[:action].downcase, args)
   else
     simulation.send(action[:action].downcase)
