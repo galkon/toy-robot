@@ -1,7 +1,7 @@
 class Robot
   def initialize(x:, y:, facing:)
-    @position  = Position.new(x: x, y: y)
-    @direction = Direction.new(facing)
+    @position  = Position.new(x: x, y: y).freeze
+    @direction = Direction.new(facing).freeze
   end
 
   def left_robot
@@ -41,7 +41,7 @@ class Robot
   end
 
   def build_robot_with(position:, direction:)
-    Robot.new(x: position.x, y: position.y, facing: direction.value)
+    Robot.new(x: position.x, y: position.y, facing: direction.value).freeze
   end
 
   def moved_position

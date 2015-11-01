@@ -1,6 +1,6 @@
 class Table
   def place_robot(robot)
-    @grid = Grid.new(robot) if grid.nil? || within_bounds?(robot)
+    @grid = Grid.new(robot).freeze if grid.nil? || within_bounds?(robot)
     nil
   end
 

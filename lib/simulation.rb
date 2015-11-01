@@ -4,7 +4,7 @@ class Simulation
   end
 
   def place(x:, y:, facing:)
-    table.place_robot(Robot.new(x: x, y: y, facing: facing))
+    table.place_robot(Robot.new(x: x, y: y, facing: facing).freeze)
   end
 
   def report

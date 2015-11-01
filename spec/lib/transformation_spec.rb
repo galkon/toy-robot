@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Transformation do
   let(:transformation) { Transformation.new(x: 0, y: 1) }
 
-  context 'attributes' do
+  describe 'attributes' do
     it 'has an x attribute of 0' do
       expect(transformation.x).to eq 0
     end

@@ -17,6 +17,10 @@ describe Table do
       expect(Grid).to have_received(:new).with(robot)
     end
 
+    it 'has a frozen grid' do
+      expect(table.send(:grid)).to be_frozen
+    end
+
     it 'returns nil' do
       expect(table.place_robot(robot)).to eq nil
     end

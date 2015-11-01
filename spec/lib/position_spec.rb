@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Position do
   let(:position) { Position.new(x: 0, y: 1) }
 
-  context 'attributes' do
+  describe 'attributes' do
     it 'has an x attribute of 0' do
       expect(position.x).to eq 0
     end
@@ -19,6 +19,10 @@ describe Position do
 
     it 'adds the x and y values to the positions x and y values' do
       expect(position.transform(transformation)).to eq expected_position
+    end
+
+    it 'returns a frozen object' do
+      expect(position.transform(transformation)).to be_frozen
     end
   end
 end

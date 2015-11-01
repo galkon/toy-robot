@@ -7,14 +7,25 @@ describe Robot do
   let(:robot)           { Robot.new(x: x, y: y, facing: direction_value) }
   let(:direction)       { robot.send(:direction) }
 
-  describe '#left_robot' do
-    let(:left_direction) { instance_double(Direction, value: :east) }
-    let(:expected_robot) do
-      Robot.new(x: x, y: y, facing: left_direction.value)
+  describe 'attributes' do
+    describe 'position' do
+      it 'should be frozen' do
+        expect(robot.send(:position)).to be_frozen
+      end
     end
 
-    before do
-      allow(direction).to receive(:left_direction) { left_direction }
+    describe 'direction' do
+      it 'should be frozen' do
+        expect(robot.send(:direction)).to be_frozen
+      end
+    end
+  end
+
+  describe '#left_robot' do
+    let(:expected_robot) { Robot.new(x: x, y: y, facing: :north) }
+
+    it 'returns a frozen object' do
+      expect(robot.left_robot).to be_frozen
     end
 
     it 'returns a new robot with a left direction' do
@@ -23,13 +34,10 @@ describe Robot do
   end
 
   describe '#right_robot' do
-    let(:right_direction) { instance_double(Direction, value: :north) }
-    let(:expected_robot) do
-      Robot.new(x: x, y: y, facing: right_direction.value)
-    end
+    let(:expected_robot) { Robot.new(x: x, y: y, facing: :south) }
 
-    before do
-      allow(direction).to receive(:right_direction) { right_direction }
+    it 'returns a frozen object' do
+      expect(robot.right_robot).to be_frozen
     end
 
     it 'returns a new robot with a right direction' do
@@ -40,15 +48,19 @@ describe Robot do
   describe '#moved_robot' do
     let(:x) { 2 }
     let(:y) { 2 }
+    let(:new_x) { 3 }
+    let(:new_y) { 2 }
 
     let(:expected_robot) do
       Robot.new(x: new_x, y: new_y, facing: direction_value)
     end
 
+    it 'returns a frozen object' do
+      expect(robot.moved_robot).to be_frozen
+    end
+
     context 'east direction' do
       let(:direction_value) { :east }
-      let(:new_x) { 3 }
-      let(:new_y) { 2 }
 
       it 'sets the position to the expected_position' do
         expect(robot.moved_robot).to eq expected_robot
