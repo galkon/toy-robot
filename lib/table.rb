@@ -1,16 +1,6 @@
 class Table
-  def initialize(width = 5, height = 5)
-    @width = width
-    @height = height
-    @grid = Array.new(height) { Array.new(width) }
-  end
-
   def place_robot(robot)
-    if within_bounds?(robot)
-      remove_robots
-      @robot = robot
-      grid[robot.y][robot.x] = @robot
-    end
+    @grid = Grid.new(robot) if grid.nil? || within_bounds?(robot)
     nil
   end
 
@@ -28,13 +18,14 @@ class Table
 
   private
 
-  attr_reader :grid, :robot, :width, :height
+  attr_reader :grid
 
   def within_bounds?(object)
-    object.x >= 0 && object.y >= 0 && object.x < width && object.y < height
+    object.x >= 0 && object.y >= 0 &&
+      object.x < grid.width && object.y < grid.height
   end
 
-  def remove_robots
-    grid.each { |row| row.delete_if { |item| item.is_a?(Robot) } }
+  def robot
+    grid.robot
   end
 end

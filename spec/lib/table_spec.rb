@@ -1,38 +1,32 @@
 require 'spec_helper'
 
 describe Table do
-  let(:table)     { Table.new }
-  let(:robot)     { instance_double(Robot, x: 0, y: 0) }
-  let(:grid)      { table.send(:grid) }
+  let(:table) { Table.new }
+  let(:robot) { instance_double(Robot, x: 0, y: 0) }
+  let(:grid)  { instance_double(Grid, robot: robot, width: 5, height: 5) }
+
+  before { table.instance_variable_set('@grid', grid) }
 
   describe '#place_robot' do
-    before { table.place_robot(robot) }
-
-    it 'places the robot in the grid' do
-      expect(grid[0][0]).to eq robot
+    before do
+      allow(Grid).to receive(:new)
+      table.place_robot(robot)
     end
 
-    it 'sets @robot' do
-      expect(table.instance_variable_get('@robot')).to eq robot
+    it 'creates a new grid with the robot' do
+      expect(Grid).to have_received(:new).with(robot)
     end
 
-    context 'multiple robots' do
-      let(:robot_2) { instance_double(Robot, x: 1, y: 0) }
-
-      before { allow(robot).to receive(:is_a?).with(Robot) { true } }
-
-      it 'only allows one robot to be placed' do
-        table.place_robot(robot_2)
-        expect(grid[robot.y][robot.x]).to be_nil
-      end
+    it 'returns nil' do
+      expect(table.place_robot(robot)).to eq nil
     end
 
     context 'robot x is negative' do
       let(:robot) { instance_double(Robot, x: -2, y: 0) }
 
-      it "doesn't add the robot to the grid" do
+      it "doesn't set a grid with the robot" do
         table.place_robot(robot)
-        expect(grid[robot.y]).to_not include(robot)
+        expect(Grid).to_not have_received(:new).with(robot)
       end
     end
 
@@ -41,7 +35,7 @@ describe Table do
 
       it "doesn't add the robot to the grid" do
         table.place_robot(robot)
-        expect(grid[robot.y]).to_not include(robot)
+        expect(Grid).to_not have_received(:new).with(robot)
       end
     end
 
@@ -50,7 +44,7 @@ describe Table do
 
       it "doesn't add the robot to the grid" do
         table.place_robot(robot)
-        expect(grid[robot.y]).to_not include(robot)
+        expect(Grid).to_not have_received(:new).with(robot)
       end
     end
 
@@ -59,12 +53,8 @@ describe Table do
 
       it "doesn't add the robot to the grid" do
         table.place_robot(robot)
-        expect(grid[robot.y]).to eq nil
+        expect(Grid).to_not have_received(:new).with(robot)
       end
-    end
-
-    it 'returns nil' do
-      expect(table.place_robot(robot)).to eq nil
     end
   end
 
@@ -74,30 +64,31 @@ describe Table do
     end
 
     before do
+      allow(table).to receive(:place_robot)
       allow(robot).to receive(:moved_robot) { expected_robot }
-      table.instance_variable_set('@robot', robot)
     end
 
     it 'places the moved robot' do
       table.place_moved_robot
-      expect(grid[expected_robot.y][expected_robot.x]).to eq expected_robot
+      expect(table).to have_received(:place_robot).with(expected_robot)
     end
   end
 
   describe '#place_turned_robot' do
-    before { table.instance_variable_set('@robot', robot) }
+    before { table.instance_variable_set('@grid', grid) }
 
     context 'left turn' do
       let(:turn)       { :left }
       let(:left_robot) { instance_double(Robot, x: 0, y: 0) }
 
       before do
+        allow(table).to receive(:place_robot)
         allow(robot).to receive(:left_robot) { left_robot }
-        table.place_turned_robot(turn)
       end
 
       it 'places a turned robot' do
-        expect(grid[left_robot.y][left_robot.x]).to eq left_robot
+        table.place_turned_robot(turn)
+        expect(table).to have_received(:place_robot).with(left_robot)
       end
     end
 
@@ -106,19 +97,19 @@ describe Table do
       let(:right_robot) { instance_double(Robot, x: 0, y: 0) }
 
       before do
-        table.instance_variable_set('@robot', robot)
+        allow(table).to receive(:place_robot)
         allow(robot).to receive(:right_robot) { right_robot }
-        table.place_turned_robot(turn)
       end
 
       it 'places a turned robot' do
-        expect(grid[right_robot.y][right_robot.x]).to eq right_robot
+        table.place_turned_robot(turn)
+        expect(table).to have_received(:place_robot).with(right_robot)
       end
     end
   end
 
   describe '#report_robots_position' do
-    before { table.instance_variable_set('@robot', robot) }
+    before { table.instance_variable_set('@grid', grid) }
 
     it 'returns the robots string representation' do
       expect(table.report_robots_position).to eq robot.to_s

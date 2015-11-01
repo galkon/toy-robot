@@ -36,11 +36,7 @@ class FileParser
 
   def add_place_action(args)
     args = split_args(args)
-    action = place_action(
-      x: args[0].to_i,
-      y: args[1].to_i,
-      facing: args[2]
-    )
+    action = place_action(x: args[0].to_i, y: args[1].to_i, facing: args[2])
     @parsed_actions << action
   end
 end
