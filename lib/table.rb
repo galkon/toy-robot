@@ -9,7 +9,8 @@ class Table
   end
 
   def place_turned_robot(turn)
-    place_robot(robot.send(:"#{turn}_robot")) if grid && [:left, :right].include?(turn)
+    return unless grid
+    place_robot(robot.send(:"#{turn}_robot")) if [:left, :right].include?(turn)
   end
 
   def report_robots_position

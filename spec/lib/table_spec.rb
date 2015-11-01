@@ -145,7 +145,7 @@ describe Table do
     context 'no grid' do
       before { table.instance_variable_set('@grid', nil) }
 
-      it "returns nil" do
+      it 'returns nil' do
         expect(table.report_robots_position).to eq nil
       end
     end

@@ -1,14 +1,14 @@
 require 'spec_helper'
 
 describe FileRunner do
-  let(:file_runner)     { FileRunner.new(file) }
+  let(:runner) { FileRunner.new(file) }
 
   context 'complicated robots file' do
     let(:file)            { 'spec/fixtures/complicated_robots.txt' }
     let(:expected_output) { "Robot: [x = 0, y = 4, facing = west]\n" }
 
     it 'sends the correct position to stdout' do
-      expect { file_runner.execute_actions }.to output(expected_output).to_stdout
+      expect { runner.execute_actions }.to output(expected_output).to_stdout
     end
   end
 
@@ -17,11 +17,11 @@ describe FileRunner do
     let(:expected_output) { "\n" }
 
     it "doesn't raise any exceptions" do
-      expect { file_runner.execute_actions }.to_not raise_error
+      expect { runner.execute_actions }.to_not raise_error
     end
 
-    it "outputs nothing" do
-      expect { file_runner.execute_actions }.to output(expected_output).to_stdout
+    it 'outputs nothing' do
+      expect { runner.execute_actions }.to output(expected_output).to_stdout
     end
   end
 end
