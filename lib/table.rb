@@ -19,12 +19,7 @@ class Table
   end
 
   def place_turned_robot(turn)
-    case turn
-    when :left
-      place_robot(robot.left_robot)
-    when :right
-      place_robot(robot.right_robot)
-    end
+    place_robot(robot.send(:"#{turn}_robot")) if [:left, :right].include?(turn)
   end
 
   def report_robots_position
@@ -36,10 +31,7 @@ class Table
   attr_reader :grid, :robot, :width, :height
 
   def within_bounds?(object)
-    object.x >= 0 &&
-      object.y >= 0 &&
-      object.x < width &&
-      object.y < height
+    object.x >= 0 && object.y >= 0 && object.x < width && object.y < height
   end
 
   def remove_robots

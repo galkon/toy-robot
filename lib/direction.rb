@@ -1,5 +1,3 @@
-require 'transformation'
-
 class Direction
   attr_reader :value
 
